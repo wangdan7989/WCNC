@@ -19,8 +19,6 @@
 \begin{document}
 
 \title{A Hybrid Model based on Multi-Dimensional Features for Insider Threat Detection\\
-{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
-should not be used}
 \thanks{Identify applicable funding agency here. If none, delete this.}
 }
 
@@ -42,7 +40,7 @@ email address}
 
 \begin{abstract}
 Insider threats have shown their power by hugely affecting national security, financial stability, and the privacy of many thousands of people.
-A number of techniques have been proposed to detect insider threats either by comparing behaviors  among different individuals or by comparing the the behaviors across different time periods of the same individual. However, due to the  fact that the behaviors of insider threats are always complex and diverse, both of them always fail to identify certain kinds of inside threats.
+A number of techniques have been proposed to detect insider threats either by comparing behaviors among different individuals or by comparing the behaviors across different time periods of the same individual. However, due to the  fact that the behaviors of insider threats are always complex and diverse, both of them always fail to identify certain kinds of inside threats.
 This paper focuses on proposing a hybrid model to detect insider threats  based on multi-dimensional features.
 First, based on the isolation Forest algorithm,  
 an Across-Domain Anomaly Detection(ADAD) model is proposed to dentify anomalous behaviors that deviates from the behaviors of their peers by using multi-source information. Second, we propose an Across-Time Anomaly Detection(ATAD) model to measure the degree of unusual changes of a user's behavior  by implementing an improved Markov model. Finally, our proposed hybrid model present a fusion
@@ -57,23 +55,24 @@ insider threat detection, information fusion, hybrid model, Isolation Forest, Ma
 
 \section{Introduction}
 
-Insider threats are threats with malicious intent directed towards organizations by people internal to the organization.
-These include physical sabotage activities, theft of confidential data and business secrets, and fraud. Financial loss and reputation damage caused by this ``known unknow'' cybersecurity threat far outweighs that caused by external attacks. One of the most recent articles from CSO magazine\cite{b3} compared the cost between external and internal attacks and noted that while it takes about 50 days to fix a data breach caused by an internal attack, it only takes 2 to 5 days in the case of external attacks. Moreover, “attacks by malicious insiders are also the costliest to fix (\$145,000), followed by denial of service (\$127,000) and Web-based attacks (\$96,000)”, indicating the severity of this problem. Nowadays, Researchers have proposed different models aimed at preventing or detecting the presence of attacks.
+Insider threats are threats with malicious intent directed towards organizations by people internal to the organization\cite{b1}.
+These include physical sabotage activities, theft of confidential data and business secrets, and fraud. Financial loss and reputation damage caused by this ``known unknow'' cybersecurity threat far outweighs that caused by external attacks. One of the most recent articles from CSO magazine\cite{b3} compared the cost between external and internal attacks and noted that while it takes about 50 days to fix a data breach caused by an internal attack, it only takes 2 to 5 days in the case of external attacks. Nowadays, researchers have proposed different models to prevent or detect the presence of attacks.
 
-Existing literature focuses on two types of the detection 
-models: data driven detection \cite{b4}\cite{b5} and behavior driven detection\cite{b2}\cite{b6}: 
+Existing literature focuses on two types of insider threat detection 
+models: data driven detection models \cite{b4}\cite{b5} and behavior driven detection models\cite{b2}\cite{b6}: 
 
-\noindent \emph{1)}The first model aims to find a normal portrait in all users data in order to detect insider threat that deviates from  this normal portrait by comparing with their peers. Figure 1 shows an example of insider threats which can be detected by this kind of model \cite{b10}. After getting off work, the general behavior is that everyone will go home to have a rest. Few of users begin to secretly deal with the company's confidential documents when others are sunk in sleep at midnight and are more likely to be a insider threat. However, merely comparing the behaviors among peers,  this kind of models fails to detect a malicious insider who tries to behave like a normal user to cover up his evil\cite{b10}.
+\noindent \emph{1)} The first model aims to find a normal portrait in all users data in order to detect insider threat that deviates from  this normal portrait by comparing with their peers\cite{b10}. Figure 1 shows an example of insider threats which can be detected by this kind of model \cite{b10}. After getting off work, the general behavior is going home to have a rest. By contrast, few of users secretly deal with the company's confidential documents in the workplace when others are sunk in sleep at midnight, and are more likely to be a insider threat. However, merely comparing the behaviors among peers,  this kind of models fails to detect a malicious insider who tries to behave like a normal user to cover up his evil.
 
-\noindent \emph{2)}The second model regards the abnormal change in the behavior as the basis for inside threat detection by comparing behaviors of themselves in different time periods.
-Figure 1 also show an example to depict a malicious insiders detection by finding the user's unusual changes based on the behavior-driven method\cite{b8}. Over a long period in the past, the regular behavior of the user is to click on the browser after booting, view the email, and then reply. But one day, he act abnormally: he connected the mobile device after booting, and had a series of operations on the file-copy to steal the company's confidential documents. These abnormal behaviors don't match his usual styles of doing things. It is worth to note that although the malicious insider may try to behave like a normal user, the threat can also be detected based on the deviation from his regular behavior routines.
+\noindent \emph{2)} The second model regards the abnormal changes in the behavior as the basis for inside threat detection by comparing behaviors of themselves in different time periods.
+Figure 1 also show an example to depict a malicious insiders detection based on the behavior-driven method\cite{b8}. Over a long period in the past, the regular behavior of the user was to click on the browser after booting, view the email, and then reply. But one day, he acted abnormally: he connected the mobile device after booting, and had a series of operations on the file-copy to steal the company's confidential documents. These abnormal behaviors don't match his usual styles of doing things. It is worth to note that although the malicious insider may try to behave like a normal user, the threat can also be detected based on the deviation from his regular behavior routines.
 However, the model is unable to recognise situations where a user systematically attacks an
 organisation over a long-term period. \cite{b2}. 
 
 Thus, Insider threat surveys\cite{b9} suggest the problem of insider threat detection cannot be defined only as a data or behavior driven problem. Therefore, it is necessary to model the problem as data and behavior driven problems, based on which a effective model needs to be proposed.
 
 Thus, based on multidimensional features, this paper proposes a hybrid model that combines a data driven model with a behavior driven model to detect insider threat in a more robust and accurate manner.
-First, the multi-dimensional features extracted from data collected  from the enterprise network is formatted and fed separately into the two separate models. Second, each model generates an abnormal score to represent the degree of users' unusual behaviors. Finally, the abnormal scores of two models are fused as the final abnormal scores for each user, and a user will be detected a insider threater if the anomaly score exceeds the threshold. After a wide range experiment, it is 
+First, the multi-dimensional features extracted from data collected  from an enterprise network is formatted and fed separately into the two separate models. Second, each model generates an abnormal score to represent the degree of users' unusual behaviors. Finally, the abnormal scores of two models are fused to be the final abnormal score of each user, and a user is identified to be a insider threater if the anomaly score exceeds the threshold. 
+After a wide range experiments, it is 
 verified that the hybrid model can detect insider threats in a more robust and accurate manner.
 Overall, the contributions of this paper can be summarized as follows:
 
@@ -82,23 +81,24 @@ Overall, the contributions of this paper can be summarized as follows:
 \item 
 We apply the isolation Forest to detect behavioral inconsistencies among the behaviors of users. In this model, we extract and combine temporal features from multi-source data comprehensively when constructing the user's portrait.
 
-\item We propose an improved model based on Markov to identify users' unusual change. The proposed model considers all historical behavior of users as the contextual information. As compared with the existing predictor of Markov model \cite{b10}, our proposed approach show higher efficiency.
+\item We propose an improved model based on Markov to identify users' unusual changes. The proposed model considers all historical behaviors of users as the contextual information. As compared with the existing predictor of Markov model \cite{b10}, our proposed approach show higher efficiency.
 
 \iffalse
 \item We propose a hybrid model for accuracy detection of insider threats by fusion methods which is able to determine malicious insiders that not only act inconsistent with peers but also have unusual change compared with their historic behavior and  achieve the accuracy of 95\%. 
 \fi
-\item We propose a hybrid model for accuracy detection of insider threats. The model is able to determine malicious insiders that not only act inconsistent with peers but also have unusual change compared with their historic behavior. 
-After a wide range experiment, it is verified that the proposed hybrid model can detect insider threats with the accuracy of 95\%. 
+\item We propose a hybrid model based on multi-dimensional features for insider threat detection. The model is able to determine malicious insiders that not only act inconsistent with their peers but also have unusual changes compared with their historic behaviors. 
+Through extensive experiments, we abtain the accuracy of 95\% through the proposed model, which is of great significance in industry and scientific research.
+ 
 
 
 \end{enumerate}
 
 The remainder of this article is structured as follows. 
-Section 2 presents the context and related work about the research.
-Then, section 3 we detail our approach and discuss algorithms used and how we train our model to detect insider threats. Next, in Section 4
-we detail our implementation and analyze the reault. 
-Finally we conclude in Section 5, also presenting limitation of our work
-and outlining avenues for future research.
+section 2 presents the related work about the research.
+Then, section 3 details our approach. Next, in section 4, 
+we detail our implementation of the models and analyze the experiments reaults. 
+Finally we conclude in section 5, also presenting limitation of our work.
+
 \begin{figure*}[htb]
 \centerline{\includegraphics[width = 0.8\textwidth]{figure/figure1.eps}}
 \caption{Example of insider threat.}
@@ -108,22 +108,25 @@ and outlining avenues for future research.
 
 \section{Related work}
 %在增加一部分related work：hybrid model 或者多特征融合
-The topic of insider threat has attracted much attention recently in different fields. Researchers have proposed different models aimed at preventing or detecting the presence of attacks (\cite{b11}\cite{b12}). To elicit the state of art, the work
+The topic of insider threat has recently received much attention in the literature. Researchers have proposed different models aimed at preventing or detecting the presence of attacks \cite{b11}\cite{b12}. To elicit the state of art, the work
 presented here is focused on the approaches of detecting  insider threat based on data-driven methods and behavior-driven methods.
 
-Methods based on data analytics include the work done by Mathew et al.\cite{b13} on account of user access patterns, the work of Eberle et al. \cite{b14} on using social graphs to detecting the abnormal. More recently, Eldardiry et al. \cite{b15} have also proposed a system for insider threat detection based on feature extraction from user activities. Michael Goldsmith use some methods based on fusion of multi-source information and user behavior\cite{b16}. There have also been various approaches based on specific insider threat scenarios to detect abnormal\cite{b7}\cite{b8}. 
-However, they did not factor in the change of user behavior over time. We note that while a common activity not be suspicious, a rare change of the order  common activity can be.
+With regard to the data-driven methods, Mathew et al.\cite{b13} detected inside threat on account of user access patterns, Eberle et al. \cite{b14} used social graphs to detect the abnormal. More recently, Eldardiry et al. \cite{b15} have also proposed a system in managing insider
+attacks which compared user’s behaviour based on peer baselines.
+Michael Goldsmith applied a layered architecture by  fusing across multiple levels information to detect anomalies from heterogeneous data\cite{b16}. Hoda et al. \cite{b13} detect peer groups of users and modeling user behavior with respect to these peer groups, and subsequently detect insider activity by identifying users who deviate from their peers with respect to the user behavior models. 
+There have also been various approaches based on data-driven to detect abnormal\cite{b7}\cite{b8}. 
+However, they did not factor in the changes of user behaviors over time. We note that while a common activity not be suspicious, a rare change of the order  common activity can be. So some methods based on behavior-driven are proposed to solve the problems. 
 
-There are several papers based on behavioral models\cite{b10}\cite{b11}\cite{b12}. Hoda et al. \cite{b13}detect peer groups of users and modeling user behavior with respect to these peer groups, and subsequently detect insider activity by identifying users who deviate from their peers with respect to the user behavior models. 
-Tabish Rashid \cite{b37} takes the change of user behavior  over time to detect the anomaly and achieved some results. However, these models based on behavior-driven just work out based on unusual change of user behavior but will miss recognising situations where a user systematically attacks an
-organisation over an extended time-framework.
+There are several literatures based on behavior-driven models\cite{b10}\cite{b11}\cite{b12}. 
+Tabish Rashid \cite{b37} takes the change of user behavior  over time to detect the anomaly and achieved some results. However, these behavior-driven models just work out based on unusual change of user behavior, but will miss recognising situations where a user systematically attacks an organisation over an extended time-framework.
 
+\iffalse
 Considering these two factors, we propose 
 a hybrid model based on multi-dimensional features for accuracy detection of anomalies.
 We fusion two method based on data and behavior.
 The first one, we compare behaviours across different individuals, while in the latter, we compare behaviours acorss different times for the same individual.  
 We abtain the accuracy of 95\% through the proposed model, which is of great significance in industry and scientific research.
-
+\fi
 
 
 
@@ -135,11 +138,11 @@ We propose a fusion method based on multi-dimensional features for insider threa
 After the features extraction, the architecture has two main components - one component for detecting abnormality across information sources (or domains)through Iforest algorithm named “Across-Domain Anomaly Detection(ADAD)”, and another for detecting inconsistencies across time named “Across-Time Anomaly Detection(ATAD)” - which are then fused together to improve accuracy and robustness. These components are briefly described in next section.
 \fi
 
-We propose a hybrid model based on multi-dimensional features for insider threat detection which is illustrated in Figure2. First, we count and analyze the characteristics of each domain(e.g., logons) from multi-source information as parameters into “Across-Domain Anomaly Detection(ADAD)” to get anomaly scores. Second, we extract the features of time-series behaviors of users from multi-source information, then we identify changes in activities of a user compared to that user’s past activities through “Across-Time Anomaly Detection(ATAD)” to get anomaly scores. Finally, we combine the anomaly scores from the two components to detect insider threat. Next, we will introduce the experimental data. 
+We propose a hybrid model based on multi-dimensional features for insider threat detection which is illustrated in Figure2. First, we analyze the characteristics of each domain(e.g., logons) from multi-source information as parameters into “Across-Domain Anomaly Detection(ADAD)” to get anomaly scores. Second, we extract the features of time-series behaviors of users from multi-source information, then we identify changes in activities of a user compared to that user’s past activities through “Across-Time Anomaly Detection(ATAD)” to get anomaly scores. Finally, we combine the anomaly scores from the two components to detect insider threat. Next, we will introduce the experimental data. 
 
 
 \begin{figure}[htb]
-\centerline{\includegraphics[width = 0.45\textwidth]{figure/figure2.eps}}
+\centerline{\includegraphics[width = 0.35\textwidth]{figure/figure2.eps}}
 \caption{Anomaly Detection Framework.}
 \label{fig}
 \end{figure}
@@ -168,7 +171,7 @@ The figure 2 reports the structure of the approach.
 
 
 \begin{figure}[htb]
-\centerline{\includegraphics[width = 0.45\textwidth]{figure/figure3.eps}}
+\centerline{\includegraphics[width = 0.35\textwidth]{figure/figure3.eps}}
 \caption{An overview of the Across-Domain Anomaly Detection(ADAD).}
 \label{fig}
 \end{figure}
@@ -298,7 +301,7 @@ behaviors of themselves in different time periods.
 \fi
 Figure 6 shows a graphical overview of the processing approach and pipeline we use, and the remainder of this section is dedicated to describing each stage in it.
 \begin{figure}[htb]
-\centerline{\includegraphics[width = 0.45\textwidth]{figure/figure6.eps}}
+\centerline{\includegraphics[width = 0.35\textwidth]{figure/figure6.eps}}
 \caption{An overview of the Across-Time Anomaly Detection(ATAD).}
 \label{fig}
 \end{figure}
@@ -317,9 +320,10 @@ one is the action in last week,the other is the rest of the time, which gives us
 This detection model is implemented based on Markov Models
 taking historical behaviors features into account. Users have defferent behaviors on computers every day. When a user finish a behavior and begin the next behavior, a new record is created. 
 The historical behaviors may be a sequence of observations \emph{$B=(a_1,a_2...,a_n)$}, in which \emph{$a_i$} is the behavior that user is served by at time \emph{t}. 
+
 Consider a user whose behaviors history is \emph{$B = a_1a_2...a_n.$}
 Let substring \emph{$B(i, j) = a_ia_{i+1}\ldots a_j$} for any \emph{$1 \textless i \textless j \textless n$}.
-We think of the user’s behaviors as a random variable \emph{X}. Let \emph{$X(i,j)$} be a string \emph{$X_iX_{i+1}\ldots X_j$} representing the sequence of random variates \emph{$X_i, X_{i+1},\ldots X_j$} for any \emph{$1 < i < j < n$}. Define the context \emph{$c = B(n-k+1,n)$}. Let \emph{A} be the set of all possible behaviors. 
+ We think of the user’s behaviors as a random variable \emph{X}. Let \emph{$X(i,j)$} be a string \emph{$X_iX_{i+1}\ldots X_j$} representing the sequence of random variates \emph{$X_i, X_{i+1},\ldots X_j$} for any \emph{$1\textless i \textless j \textless n$}. Define the context \emph{$c = B(n-k+1,n)$}. Let \emph{A} be the set of all possible behaviors. 
 For all \emph{$a \in A $} and \emph{$i \in \{1,2,. . ., n\}$}, we let the notation \emph{$P(X_i = a_i|\ldots)$} denotes the probability that \emph{$X_i$} takes the value \emph{$a_i$}.
 \iffalse
 \begin{align}
@@ -335,13 +339,13 @@ These probabilities that  can be represented by a \emph{transition
 probability matrix M}. Depending on the assumption of Markov, both the rows and columns of \emph{M} are
 indexed by \emph{length-k} strings from \emph{$A^k$} so that
 \begin{align}
-	&P(X_{n+1}=a|X(1,n)=B(1,n))=M(s,s')
+	&P(X_{n+1}=a|X(1,n)=B(1,n))=M(s,s'),
 \end{align}
 where \emph{$s = B(n-k+1,n)$} is the current context and \emph{$s'= B(n-k+2,n)a$} is the next context. .In that case, knowing \emph{M} would immediately provide the probability for each possible next symbol of \emph{B}. In this study, we let \emph{k} equal to 0 for more historical information for building users profile.
 
 Since we do not know \emph{M}, we can generate an estimate \emph{$\hat P$} from the current history \emph{B} using the current context \emph{c} of length \emph{k}. The probability for the next symbol to be \emph{a} is
 \begin{align}
-	P_k(a)=\hat P(X_{n+1}=a|B))= \frac {N(ca,B)}{N(c,B)}
+	P_k(a)=\hat P(X_{n+1}=a|B))= \frac {N(ca,B)}{N(c,B)},
 \end{align}
 where \emph{N(s',s)} denotes the number of times the substring \emph{s'} occurs in the string \emph{s}.
 
@@ -357,7 +361,7 @@ We defined the temporal behaviors in the recent past by opening up \emph{W} cont
 
 Second, given the \emph{M} matrix produced in the first step, the anomaly score \emph{R$_{trend}$} for the user is calculated as
 \begin{align}
-R_{trend}=\frac{\sum_{d=1}^D \prod_{t=1}^N P_k(a_{dn})}{D}
+R_{trend}=\frac{\sum_{d=1}^D \prod_{t=1}^N P_k(a_{dn})}{D},
 \end{align}
 In this study, we let \emph{N} equal to a week. Because a week can build a complete profile for a user as a week cycle.
 
@@ -406,17 +410,17 @@ Our goal is to combine suspicion/anomaly scores that have been generated from ea
 We note that in a more general analytics framework, the same technique can be used to combine scores based on relative importance or surprise/risk levels.
 In anomaly detection, an individual can be anomalous in one domain or at a time instance. Also, the relative suspicion of an individual can vary from one indicator (or information source) to another. However, most anomaly detection applications require a single overall conclusion about the relative suspicion of each individual.
 \fi
-Therefore, we developed a technique based on weight fusion to combine acorss-domain and across-time of evidence from multiple domains. In a broad sense, each source of information provides a suspicion score and the goal is to combine these scores by wight(\emph{W}) in order to identify anomalies with greater accuracy. The combined suspicion score is computed as
+Therefore, we developed a technique based on weight fusion to combine acorss-domain and across-time of evidence from multiple domains. In a broad sense, each source of information provides a suspicion score and the goal is to combine these scores by wight(\emph{W}) in order to identify anomalies with greater accuracy. The combined suspicion score \emph{$R_combine$} is computed as
 \begin{align}
 R_{combined}&= W_1*R_{ADAD}+W_2*R_{ATAD}\\
 r&=\begin{cases}
 \frac{W_2}{W_1}
 &\mbox{if } W_1 \textgreater 0\\
 1
-&\mbox{if } W_1 = 0\\
+&\mbox{if } W_1 = 0,\\
 \end{cases}
 \end{align}
-
+we can then set a threshold \emph{$T_{com}$}, which we use to classify users as anomalous or not. If the suspicion score of the user is below the threshold, we classify it as anomalous.
 
 \section{Experiment}
 
@@ -461,7 +465,7 @@ We found that removable media domains is the most detectable (with the highest d
 \centering  % 表居中
 \begin{tabular}{lcccc}  % {lccc} 表示各列元素对齐方式，left-l,right-r,center-c
 \hline
-iForest Input & 	&Accuracy &Precision &Recall\\ \hline
+Domian  &iForest Input &Accuracy &Precision &Recall\\ \hline
 	
 Logon 	& MAX &89\% &32\% &47\%\\
   & MODE &87\% &22\% &34\%\\\hline
@@ -475,7 +479,7 @@ Filecopy 	& MAX &80\% &60\% &28\%\\
   & MODE &77\% &44\% &20\%\\\hline
 All properties 	& MAX &82\% &68\% &34\%\\
   & MODE &79\% &52\% &31\%\\\hline
-All properties 	& dimension=2 &87\% &79\% &35\%\\\hline
+PCA 	&PCA  &87\% &79\% &35\%\\\hline
 
 \end{tabular}
 
@@ -510,7 +514,7 @@ In other words, IM is more likely to detect abnormal changes in behavioral trend
 
 
 \begin{figure}[htb]
-\centerline{\includegraphics[width = 0.45\textwidth]{figure/figure7.eps}}
+\centerline{\includegraphics[width = 0.25\textwidth]{figure/figure7.eps}}
 \caption{ROC Curve showing the differences between MM algorithm and improved MM algorithm.}
 \label{fig}
 \end{figure}
@@ -521,10 +525,12 @@ In this section,  we first introduce the performance metrics for evaluating the 
 we then provide a comparative assessment of our fusion method with the above two models.
 
 \emph{1) Evaluation Metrics and Baselines:}
-For the fusion method, the most important is to determine the proportion of each component. So we let \emph{r} which demotes the proportion of the two model increase from 0 to 1. Then we we consider the metrics \emph{accuracy, Precision} and \emph{recall} to quantitatively evaluate the models.
+For the fusion method, the most important is to determine the proportion of each component. So we let \emph{r} which demotes the proportion of the two model increase from 0 to 1. Then we use the metrics \emph{accuracy, Precision} and \emph{recall} to quantitatively evaluate the models.
 
+\emph{2) Comparative Evaluation:} 
 The method based on weight fuses the ATAD and the ADAD, then get the final anomaly score. The result is shown as Table 2.
-Parameter \emph{r} represents the proportion of the two methods' anomaly score. To remove amplitude variation and only focus on the underlying distribution shape on data, the scores are normalized before the weight fusion. When \emph{r} = 0, it is the result of individual ADAD method. When \emph{r} = 1, it is the result of individual ATAD method. We can see that when \emph{r} is 3/7, the accuracy and recall rate is the highest, and the combination of weights is the best. Indeed, it is remarkable that a suitable combination of the individual ATAD and ADAD scores in an appropriate fashion leads to significant improvement in performance relative to any of the individual ATAD or ADAD sources.
+Parameter \emph{r} represents the proportion of the two methods' anomaly score. To remove amplitude variation and only focus on the underlying distribution shape on data, the scores are normalized before the weight fusion. When \emph{r} = 0, it is the result of individual ADAD method. When \emph{r} = 1, it is the result of individual ATAD method. We can see that  
+only the ADAD is better than only the ATAD, and fusingh  two model is better than the ADAD. When \emph{r} values varies between 1/9 and 3/7, we can clearly see that the precision has a greater improvement. The ADAD model is based on data driven detection, and it fails to detect a malicious insider who tries to behave like a normal user to cover up his evil. However, the ATAD can make up for this deficiency by comparing behaviors of users in different time periods to detect insider threats. So, it is remarkable that a suitable combination of the individual ATAD and ADAD scores in an appropriate fashion leads to significant improvement in performance relative to any of the individual ATAD or ADAD sources. Espeicially, when \emph{r} is 3/7, the precision and recall rate is the highest, and the combination of weights is the best.
 
 \iffalse
 \begin{table}[tbp]
@@ -569,14 +575,17 @@ we will present the limitation of our work in the next section.
 %indicates that 95\% of the insider threaters we detected are true insider threaters.  
 
 \begin{figure}[htb]
-\centerline{\includegraphics[width = 0.45\textwidth]{figure/figure8.eps}}
+\centerline{\includegraphics[width = 0.25\textwidth]{figure/figure8.eps}}
 \caption{Anomaly score distribution.}
 \label{fig}
 \end{figure}
 
 \section{Conclusion And Future work}
 
-In this paper we have examined the problem of insider threat detection. We propose a hybrid model that combines a data driven model with a behavior driven model to detect insider threat in a more robust and accurate manner. The model is able to determine malicious insiders that not only act inconsistent with peers but also have unusual change compared with their historic behavior. After a wide range experiment, it is verified that the proposed hybrid model can detect insider threats with the accuracy of 95%.
+In this paper we have examined the problem of insider threat detection. We propose a hybrid model that combines a data driven model with a behavior driven model to detect insider threat in a more robust and accurate manner. 
+First, the multi-dimensional features extracted from data collected  from the enterprise network is formatted and fed separately into the two separate models. Second, each model generates an abnormal score to represent the degree of users' unusual behaviors. Finally, the abnormal scores of two models are fused as the final abnormal scores for each user, and a user will be detected a insider threater if the anomaly score exceeds the threshold. After a wide range experiment, it is 
+verified that the hybrid model can detect insider threats with the accuracy of 95%.
+
 
 
 \textbf{Future work.}
@@ -611,6 +620,7 @@ acknowledgments in the unnumbered footnote on the first page.
 
 
 \begin{thebibliography}{00}
+\bibitem{b1}Gavai, Gaurang, et al. "Detecting Insider Threat from Enterprise Social and Online Activity Data." ACM CCS International Workshop on Managing Insider Security Threats ACM, 2015:13-20.
 \bibitem{b1} Gamachchi, Anagi, L. Sun, and S. Boztas. "A Graph Based Framework for Malicious Insider Threat Detection." Hawaii International Conference on System Sciences 2017.
 \bibitem{b2} Rashid, Tabish, I. Agrafiotis, and J. R. C. Nurse. "A New Take on Detecting Insider Threats: Exploring the Use of Hidden Markov Models." International Workshop 2016:47-56.
 \bibitem{b3} “By the numbers: Cyber attack costs compared,” 2016, accessed on 31/05/2016. [Online]. Available: http://www.csoonline.com/article/3074826/security/bythe-numbers-cyber-attack-costs-compared.html
