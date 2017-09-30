@@ -67,10 +67,10 @@ These include physical sabotage activities, theft of confidential data and busin
 Existing literature focuses on two types of insider threat detection 
 models: data-driven detection models \cite{b3},\cite{b4} and behavior driven detection models \cite{b5},\cite{b6}: 
 
-\noindent \emph{1)} The first model aims to find a normal portrait in all users data in order to detect insider threat that deviates from this normal portrait by comparing with their peers \cite{b7}. Figure 1 shows an example of insider threats which can be detected by this kind of model \cite{b7}. After getting off work, the general behavior is going home to have a rest. By contrast, few of users secretly deal with the company's confidential documents in the workplace when others are sunk in sleep at midnight, and are more likely to be an insider threat. However, merely comparing the behaviors among peers,  this kind of models fails to detect a malicious insider who tries to behave like a normal user to cover up his evil.
+\noindent \emph{1)} The first model aims to find a normal portrait in all users data in order to detect insider threat that deviates from this normal portrait by comparing with their peers \cite{b7}. Fig. 1 shows an example of insider threats which can be detected by this kind of model \cite{b7}. After getting off work, the general behavior is going home to have a rest. By contrast, few of users secretly deal with the company's confidential documents in the workplace when others are sunk in sleep at midnight, and are more likely to be an insider threat. However, merely comparing the behaviors among peers,  this kind of models fails to detect a malicious insider who tries to behave like a normal user to cover up his evil.
 
 \noindent \emph{2)} The second model regards the abnormal changes in the behavior as the basis for insider threat detection by comparing behaviors of themselves in different time periods.
-Figure 1 also shows an example to depict a malicious insiders detection based on the behavior-driven method \cite{b8}. Over a long period in the past, the regular behavior of the user was to click on the browser after booting, view the email, and then reply. But one day, he acted abnormally: he connected the mobile device after booting, and had a series of operations on the file-copy to steal the company's confidential documents. These abnormal behaviors don't match his usual styles of doing things. It is worth to note that although the malicious insider may try to behave like a normal user, the threat can also be detected based on the deviation from his regular behavior routines.
+Fig. 1 also shows an example to depict a malicious insiders detection based on the behavior-driven method \cite{b8}. Over a long period in the past, the regular behavior of the user was to click on the browser after booting, view the email, and then reply. But one day, he acted abnormally: he connected the mobile device after booting, and had a series of operations on the file-copy to steal the company's confidential documents. These abnormal behaviors don't match his usual styles of doing things. It is worth to note that although the malicious insider may try to behave like a normal user, the threat can also be detected based on the deviation from his regular behavior routines.
 However, the model is unable to recognize situations where a user systematically attacks an
 organization over a long-term period \cite{b3}. 
 
@@ -130,7 +130,7 @@ However, these behavior-driven models just work out based on unusual change of u
 \section{Overview of proposed approach}
 To detect insider threat that deviates from this
 normal portrait by comparing with their peers and who tries to behave like a normal user to cover up his evil,
-we propose a hybrid model based on multi-dimensional features for insider threat detection which is illustrated in Figure 2. The hybrid model includes two components, one is named ``Across-Domain Anomaly Detection (ADAD)'', and the other is ``Across-Time Anomaly Detection (ATAD)''. We get anomaly scores from the two components, then fuse them as the basis for insider threat detection.  The multi-source information contains activities such as logging on/off, sending and receiving emails, accessing external devices or files, and
+we propose a hybrid model based on multi-dimensional features for insider threat detection which is illustrated in Fig. 2. The hybrid model includes two components, one is named ``Across-Domain Anomaly Detection (ADAD)'', and the other is ``Across-Time Anomaly Detection (ATAD)''. We get anomaly scores from the two components, then fuse them as the basis for insider threat detection.  The multi-source information contains activities such as logging on/off, sending and receiving emails, accessing external devices or files, and
 accessing web sites. We refer to different categories of data as “domains”, e.g., “logon domain” and “email domain”. The dataset used in this paper is described in the following section. 
 
 
@@ -212,7 +212,7 @@ we let the ``Nmode'' presents the mode number of normal users behaviors, and the
 
 Figure 3 is an indication of the distribution of users behaviors counts. 
 \fi
-We found that there is a big difference in behavior between normal users and abnormal users at different times in a day. These abnormal users have more frequent operations in midnight comparing with normal users. So, we divide the 24 hours of a day into 4 time segments: (0:00-06:00),(0:60-12:00),(12:00-18:00),(18:00-23:00). The maximum or mode counts of user behaviors with regard to the five domains are calculated for the 4 segments respectively. Table 1 is an illustration of the feature set.
+We found that there is a big difference in behavior between normal users and abnormal users at different times in a day. These abnormal users have more frequent operations in midnight comparing with normal users. So, we divide the 24 hours of a day into 4 time segments: (0:00-06:00),(00:60-12:00),(12:00-18:00),(18:00-24:00). The maximum or mode counts of user behaviors with regard to the five domains are calculated for the 4 segments respectively. Table 1 is an illustration of the feature set.
 
 \begin{table}[tbp]
 \caption{Selected feature set.}
@@ -264,9 +264,9 @@ in the general area of intrusion detection by some notable
 works (\cite{b21}).
 
 Users have different behaviors on computers every day. When a user finishes a behavior and begins the next behavior, a new record is created. 
-The historical behaviors of a user can be represented as a sequence of observations \emph{$B=(a_1,a_2...,a_n)$}, in which \emph{$a_i$} is the behavior that user is served by at time \emph{t}. 
+The historical behaviors of a user can be represented as a sequence of observations \emph{B=$(a_1,a_2...,a_n)$}, in which \emph{$a_i$} is the behavior that user is served by at time \emph{t}. 
 
-Let substring \emph{$B(i, j) = a_ia_{i+1}\ldots a_j$} for any \emph{$1 \textless i \textless j \textless n$}. Define the context \emph{$c = B(n-k+1,n)$}. Let \emph{A} be the set of all possible behaviors. 
+Let substring \emph{B$(i, j) = a_ia_{i+1}\ldots a_j$} for any \emph{$1 \textless i \textless j \textless n$}. Define the context \emph{c = B$(n-k+1,n)$}. Let \emph{A} be the set of all possible behaviors. 
 We denote the user’s behaviors as a random variable \emph{X}. \emph{$X(i,j)$} represents the sequence of random variates \emph{$X_i, X_{i+1},\ldots X_j$} for any \emph{$1\textless i \textless j \textless n$}. 
 For all \emph{$a \in A $} and \emph{$i \in \{1,2,. . ., n\}$}, the notation \emph{$P(X_i = a_i|\ldots)$} denotes the probability that \emph{$X_i$} takes the value \emph{$a_i$}.
 These probabilities that can be represented by a \emph{transition
@@ -384,7 +384,7 @@ For ATAD, a threshold \emph{T} is essential to classify users as anomalous or no
 So we consider the metrics Receiver Operating Characteristic curves (or \emph{ROC} curves) curve to quantitatively evaluate the models \cite{b17}.
 
 \textbf{Comparison Methods.}
-MM has also been used in the general area of intrusion detection by some notable works (\cite{b21}). The new model (IM) based on Markov is respectively compared with existing detection Markov:
+MM has also been used in the general area of intrusion detection by some notable works (\cite{b21}). The improved model (IM) based on Markov is respectively compared with existing detection Markov:
 
 Markov \cite{b21}: when calculating the anomaly score, this model regards the behavior sequences of the week as the whole and treat the evaluation result of the sequences as the final anomaly score for the week.
 %This study let \emph{N} equal a day, and \emph{D} equal to a week for building a complete profile for a user as a week cycle.说一下训练集和测试集，选最后两个月的数据进行试验，因为时间太长会导致用户的行为发生变化。53天作为训练集，7天作为测试集。一个星期表示工作的一个cycle
@@ -453,7 +453,7 @@ Recall &35.19 &\textbf{35.18\%} &\textbf{31.48\%} &\textbf{35.19\%}&33.33\%&33.3
 
 \end{table*}
 
-To get a better understanding and visualization of results based on our approach, we mark the positive sample with the red and negative sample with blue. Figure 5 is an indication of how the anomaly scores are distributed when \emph{r} is 3/7 in this analysis. The graph indicates few points above the red color horizontal line which is equivalent to an anomaly score of 1.3. We chose the best threshold by \emph{ROC} curves in this scene. Users whose anomaly scores exceed the threshold can be considered as anomalous users. It reached 95\% of the accuracy when \emph{r} is 3/7. The model exists some limitations, which causes some insider threats not to be detected. 
+To get a better understanding and visualization of results based on our approach, we mark the positive sample with the red and negative sample with blue. Fig. 5 is an indication of how the anomaly scores are distributed when \emph{r} is 3/7 in this analysis. The graph indicates few points above the red color horizontal line which is equivalent to an anomaly score of 1.3. We chose the best threshold by \emph{ROC} curves in this scene. Users whose anomaly scores exceed the threshold can be considered as anomalous users. It reached 95\% of the accuracy when \emph{r} is 3/7. The model exists some limitations, which causes some insider threats not to be detected. 
 We will present the limitation of our work in the next section.
 %indicates that 95\% of the insider threat we detected are true insider threats.  
 
