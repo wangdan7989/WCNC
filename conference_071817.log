@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2017.9.6)  30 SEP 2017 17:01
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2017.9.6)  1 OCT 2017 16:43
 entering extended mode
 **conference_071817.tex
 (G:\latex\workspace\WCNC\conference_071817.tex
@@ -505,19 +505,13 @@ Package epstopdf Info: Source file: <figure/figure2.eps>
 (epstopdf)                    size: 798860 bytes
 (epstopdf)             Command: <epstopdf --outfile=figure/figure2-eps-converte
 d-to.pdf figure/figure2.eps>
-(epstopdf)             \includegraphics on input line 138.
+(epstopdf)             \includegraphics on input line 137.
 Package epstopdf Info: Output file is already uptodate.
 
 <figure/figure2-eps-converted-to.pdf, id=11, 423.5825pt x 309.155pt>
 File: figure/figure2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figure/figure2-eps-converted-to.pdf>
-Missing character: There is no ‚ in font ptmr7t!
-Missing character: There is no Ä in font ptmr7t!
-Missing character: There is no ú in font ptmr7t!
-Missing character: There is no ‚ in font ptmr7t!
-Missing character: There is no Ä in font ptmr7t!
-Missing character: There is no ù in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ú in font ptmr7t!
@@ -548,7 +542,7 @@ Package epstopdf Info: Source file: <figure/figure41.eps>
 (epstopdf)                    size: 11763 bytes
 (epstopdf)             Command: <epstopdf --outfile=figure/figure41-eps-convert
 ed-to.pdf figure/figure41.eps>
-(epstopdf)             \includegraphics on input line 177.
+(epstopdf)             \includegraphics on input line 176.
 Package epstopdf Info: Output file is already uptodate.
 
 <figure/figure41-eps-converted-to.pdf, id=64, 593.21625pt x 460.72125pt>
@@ -563,7 +557,7 @@ Package epstopdf Info: Source file: <figure/figure42.eps>
 (epstopdf)                    size: 12383 bytes
 (epstopdf)             Command: <epstopdf --outfile=figure/figure42-eps-convert
 ed-to.pdf figure/figure42.eps>
-(epstopdf)             \includegraphics on input line 181.
+(epstopdf)             \includegraphics on input line 180.
 Package epstopdf Info: Output file is already uptodate.
 
 <figure/figure42-eps-converted-to.pdf, id=65, 593.21625pt x 460.72125pt>
@@ -578,7 +572,7 @@ Package epstopdf Info: Source file: <figure/figure51.eps>
 (epstopdf)                    size: 11946 bytes
 (epstopdf)             Command: <epstopdf --outfile=figure/figure51-eps-convert
 ed-to.pdf figure/figure51.eps>
-(epstopdf)             \includegraphics on input line 185.
+(epstopdf)             \includegraphics on input line 184.
 Package epstopdf Info: Output file is already uptodate.
 
 <figure/figure51-eps-converted-to.pdf, id=66, 593.21625pt x 460.72125pt>
@@ -593,7 +587,7 @@ Package epstopdf Info: Source file: <figure/figure52.eps>
 (epstopdf)                    size: 11955 bytes
 (epstopdf)             Command: <epstopdf --outfile=figure/figure52-eps-convert
 ed-to.pdf figure/figure52.eps>
-(epstopdf)             \includegraphics on input line 189.
+(epstopdf)             \includegraphics on input line 188.
 Package epstopdf Info: Output file is already uptodate.
 
 <figure/figure52-eps-converted-to.pdf, id=67, 593.21625pt x 462.72874pt>
@@ -608,78 +602,37 @@ Package epstopdf Info: Source file: <figure/figure53.eps>
 (epstopdf)                    size: 11946 bytes
 (epstopdf)             Command: <epstopdf --outfile=figure/figure53-eps-convert
 ed-to.pdf figure/figure53.eps>
-(epstopdf)             \includegraphics on input line 193.
+(epstopdf)             \includegraphics on input line 192.
 Package epstopdf Info: Output file is already uptodate.
 
 <figure/figure53-eps-converted-to.pdf, id=68, 593.21625pt x 460.72125pt>
 File: figure/figure53-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figure/figure53-eps-converted-to.pdf>
-Overfull \hbox (18.65434pt too wide) in paragraph at lines 220--234
+Overfull \hbox (38.04652pt too wide) in paragraph at lines 218--233
  [][] 
  []
 
 [3 <G:/latex/workspace/WCNC/figure/figure1-eps-converted-to.pdf>]
 
-LaTeX Warning: Command \textless invalid in math mode on input line 269.
+LaTeX Warning: Command \textgreater invalid in math mode on input line 306.
 
-LaTeX Font Info:    Try loading font information for OML+ptm on input line 269.
+LaTeX Font Info:    Try loading font information for OML+ptm on input line 306.
 
 (D:\CTEX\MiKTeX\tex\latex\psnfss\omlptm.fd
 File: omlptm.fd 
 )
-LaTeX Font Info:    Font shape `OML/ptm/m/it' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 269.
-
-
-LaTeX Warning: Command \textless invalid in math mode on input line 269.
-
-
-LaTeX Warning: Command \textless invalid in math mode on input line 269.
-
-
-LaTeX Warning: Command \textless invalid in math mode on input line 269.
-
-
-LaTeX Warning: Command \textless invalid in math mode on input line 269.
-
-
-LaTeX Warning: Command \textless invalid in math mode on input line 269.
-
-Missing character: There is no ‚ in font ptmr7t!
-Missing character: There is no Ä in font ptmr7t!
-Missing character: There is no ô in font ptmr7t!
-
-LaTeX Warning: Command \textless invalid in math mode on input line 270.
-
-
-LaTeX Warning: Command \textless invalid in math mode on input line 270.
-
-
-LaTeX Warning: Command \textless invalid in math mode on input line 270.
-
-
-LaTeX Warning: Command \textless invalid in math mode on input line 270.
-
-
-LaTeX Warning: Command \textless invalid in math mode on input line 270.
-
-
-LaTeX Warning: Command \textless invalid in math mode on input line 270.
-
-
-LaTeX Warning: Command \textgreater invalid in math mode on input line 311.
-
 LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 311.
-
-LaTeX Warning: Command \textgreater invalid in math mode on input line 311.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 306.
 
 
-LaTeX Warning: Command \textgreater invalid in math mode on input line 311.
+LaTeX Warning: Command \textgreater invalid in math mode on input line 306.
 
 
-LaTeX Warning: Command \textgreater invalid in math mode on input line 311.
+LaTeX Warning: Command \textgreater invalid in math mode on input line 306.
+
+
+LaTeX Warning: Command \textgreater invalid in math mode on input line 306.
 
 [4 <G:/latex/workspace/WCNC/figure/figure41-eps-converted-to.pdf> <G:/latex/wor
 kspace/WCNC/figure/figure42-eps-converted-to.pdf> <G:/latex/workspace/WCNC/figu
@@ -702,17 +655,20 @@ File: figure/figure7-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/figure7-eps-converted-to.pdf> [5 <G:/latex/workspace/WCNC/figure/fi
 gure7-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figure/figure8.eps>
-(epstopdf)                    date: 2017-09-28 20:23:26
-(epstopdf)                    size: 39308 bytes
+(epstopdf)                    date: 2017-10-01 16:42:34
+(epstopdf)                    size: 39179 bytes
 (epstopdf)             Output file: <figure/figure8-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-09-28 20:24:33
-(epstopdf)                    size: 32187 bytes
 (epstopdf)             Command: <epstopdf --outfile=figure/figure8-eps-converte
 d-to.pdf figure/figure8.eps>
-(epstopdf)             \includegraphics on input line 461.
-Package epstopdf Info: Output file is already uptodate.
+(epstopdf)             \includegraphics on input line 465.
+runsystem(epstopdf --outfile=figure/figure8-eps-converted-to.pdf figure/figure8
+.eps)...executed (allowed).
 
-<figure/figure8-eps-converted-to.pdf, id=293, 561.09625pt x 418.56375pt>
+Package epstopdf Info: Result file: <figure/figure8-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-10-01 16:43:08
+(epstopdf)                    size: 29401 bytes.
+
+<figure/figure8-eps-converted-to.pdf, id=293, 543.02875pt x 408.52625pt>
 File: figure/figure8-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figure/figure8-eps-converted-to.pdf>
@@ -726,29 +682,29 @@ Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
 
-Underfull \hbox (badness 10000) in paragraph at lines 484--485
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
 []\OT1/ptm/m/n/8 By the num-bers: Cy-ber at-tack costs com-pared,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 484--485
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
 \OT1/ptm/m/n/8 2016, ac-cessed on 31/05/2016. [On-line]. Avail-able:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 484--485
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
 \OT1/ptm/m/n/8 http://www.csoonline.com/article/3074826/security/bythe-numbers-
 
  []
 
 
-Underfull \hbox (badness 7256) in paragraph at lines 490--491
+Underfull \hbox (badness 7256) in paragraph at lines 493--494
 []\OT1/ptm/m/n/8 Sherali Zeadally, et al. "De-tect-ing In-sider Threats: So-lu-
 tions
  []
 
 
-Underfull \hbox (badness 2065) in paragraph at lines 490--491
+Underfull \hbox (badness 2065) in paragraph at lines 493--494
 \OT1/ptm/m/n/8 and Trends." In-for-ma-tion Se-cu-rity Jour-nal A Global Per-spe
 c-tive
  []
@@ -813,13 +769,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4846 strings out of 495285
- 74063 string characters out of 3181588
+ 4844 strings out of 495285
+ 74036 string characters out of 3181588
  138660 words of memory out of 3000000
- 7964 multiletter control sequences out of 15000+200000
+ 7962 multiletter control sequences out of 15000+200000
  45518 words of font info for 99 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 41i,14n,38p,1022b,296s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,14n,38p,1015b,296s stack positions out of 5000i,500n,10000p,200000b,50000s
 {D:/CTEX/MiKTeX/fonts/enc/dvips/fontname/8r.enc}<D:/CTEX/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmex10.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmm
 i10.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><D:/CTEX/MiKTe
@@ -829,7 +785,7 @@ msfonts/cm/cmr5.pfb><D:/CTEX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:
 pe1/urw/times/utmb8a.pfb><D:/CTEX/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><D:/
 CTEX/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><D:/CTEX/MiKTeX/fonts/type1/urw/ti
 mes/utmri8a.pfb>
-Output written on conference_071817.pdf (6 pages, 1170573 bytes).
+Output written on conference_071817.pdf (6 pages, 1166666 bytes).
 PDF statistics:
  360 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

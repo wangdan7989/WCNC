@@ -25,12 +25,12 @@
 \author{\IEEEauthorblockN{ Bin Lv \textsuperscript{1,2},
 Dan Wang\textsuperscript{1,2},
 Yan Wang\textsuperscript{1*},
-Dan Lu\textsuperscript{1,2},
-Qiujian Lv\textsuperscript{1,2}
+Qiujian Lv\textsuperscript{1,2},
+Dan Lu\textsuperscript{1,2}
 }
 \IEEEauthorblockA{\textsuperscript 1Institute of Information Engineering, Chinese Academy of Sciences, Beijing 100093, China \\
 \textsuperscript2School of Cyber Security, University of Chinese Academy of Sciences, Beijing 100049, China\\
-Email:\{lvbin, wangdan3, wangyan, ludan, lvqiujian\}@iie.ac.cn\\
+Email:\{lvbin, wangdan3, wangyan, lvqiujian, ludan\}@iie.ac.cn\\
 \textsuperscript *Corresponding author}
 \iffalse
 \and
@@ -49,7 +49,7 @@ Insider threats have shown their power by hugely affecting national security, fi
 A number of techniques have been proposed to detect insider threats either by comparing behaviors among different individuals or by comparing the behaviors across different time periods of the same individual. However, due to the fact that the behaviors of insider threats are always complex and diverse, both of them always fail to identify certain kinds of inside threats.
 This paper focuses on proposing a hybrid model to detect insider threats based on multi-dimensional features.
 First, based on the isolation Forest algorithm,  
-an Across-Domain Anomaly Detection (ADAD) model is proposed to identify anomalous behaviors that deviates from the behaviors of their peers by using multi-source information. Second, we propose an Across-Time Anomaly Detection (ATAD) model to measure the degree of unusual changes of a user's behavior by implementing an improvement model based on Markov. Finally, our proposed hybrid model presents a fusion
+an Across-Domain Anomaly Detection (ADAD) model is proposed to identify anomalous behaviors that deviate from the behaviors of their peers by using multi-source information. Second, we propose an Across-Time Anomaly Detection (ATAD) model to measure the degree of unusual changes of a user's behavior by implementing an improvement model based on Markov. Finally, our proposed hybrid model presents a fusion
 method to integrate the evidence from the above two models. With the data lasting 17 months, we evaluate our proposed models comprehensively. The results demonstrate the robust performance of the ADAD and ATAD models and the hybrid model is demonstrated to outperform the two separate models obviously.
 
 
@@ -98,10 +98,10 @@ Through extensive experiments, we obtain the accuracy of 95\% through the propos
 \end{enumerate}
 
 The remainder of this article is structured as follows. 
-Section 2 presents the related work.
-Then, section 3 details our approach. Next, in section 4, 
+Section II presents the related work.
+Then, section III details our approach. Next, in section V, 
 we detail our implementation of the models and analyze the results of experiments. 
-Finally, we conclude in section 5, also presenting limitation of our work.
+Finally, we conclude in section VI, also presenting limitation of our work.
 
 \begin{figure*}[htb]
 \centerline{\includegraphics[width = 0.7\textwidth]{figure/figure1.eps}}
@@ -115,40 +115,39 @@ Finally, we conclude in section 5, also presenting limitation of our work.
 The topic of insider threat has recently received much attention in the literature. Researchers have proposed different models aimed at preventing or detecting the presence of attacks  \cite{b11},\cite{b12}. To elicit the state of art, the work
 presented here is focused on the approaches of detecting insider threat based on data-driven methods and behavior-driven methods, respectively.
 
-With regard to the data-driven methods, Mathew et al. \cite{b13} detected inside threat on account of user access patterns, Eberle et al. \cite{b14} used social graphs to detect the abnormal. More recently, Eldardiry et al. \cite{b15} have also proposed a system in managing insider attacks compared user’s behavior based on peer baselines.
-Michael Goldsmith applied a layered architecture by fusing across multiple levels information to detect anomalies from heterogeneous data \cite{b16}. Hoda et al. \cite{b13} detect peer groups of users and modeling user behavior with respect to these peer groups, and subsequently detect insider activity by identifying users who deviate from their peers with respect to the user behavior models. 
-There have also been various approaches based on data-driven to detect abnormal \cite{b10},\cite{b8}. 
+With regard to the data-driven methods, Mathew et al. \cite{b13} detected inside threat on account of user access patterns, Eberle et al. \cite{b14} used social graphs to detect the abnormal. More recently, Eldardiry et al. \cite{b15} have also proposed a system for managing insider attacks and compared user’s behavior based on peer baselines.
+Michael Goldsmith applied a layered architecture by fusing across multiple levels information to detect anomalies from heterogeneous data \cite{b16}. Hoda et al. \cite{b13} detected peer groups of users and modeling user behavior with respect to these peer groups. Subsequently, they detected insider activity by identifying users who deviated from their peers. 
+There have also been various other approaches based on data-driven to detect abnormal \cite{b10},\cite{b8}. 
 However, they did not factor in the changes of user behaviors over time. We note that while a common activity not be suspicious, a rare change of the order common activity can be. 
 
 There are several literatures based on behavior-driven models \cite{b7},\cite{b11},\cite{b12}. 
-Tabish Rashid \cite{b17} takes the change of the user's behavior over time to detect the anomaly and achieved some results. M. Bishop \cite{b11} examine the application of process modeling
+Tabish Rashid \cite{b17} took the change of the user's behavior over time to detect the anomaly and achieved some results. M. Bishop \cite{b11} examined the application of process modeling
 and subsequent analyses to the insider problem. 
-However, these behavior-driven models just work out based on unusual change of user behaviors, but will miss recognizing situations where a user systematically attacks an organization over an extended time-framework.
+However, these behavior-driven models just work out based on unusual changes of user behaviors, but will miss recognizing situations where a user systematically attacks an organization over an extended time-framework.
 
 
 
 \section{Overview of proposed approach}
-To detect insider threat that deviates from this
-normal portrait by comparing with their peers and who tries to behave like a normal user to cover up his evil,
-we propose a hybrid model based on multi-dimensional features for insider threat detection which is illustrated in Fig. 2. The hybrid model includes two components, one is named ``Across-Domain Anomaly Detection (ADAD)'', and the other is ``Across-Time Anomaly Detection (ATAD)''. We get anomaly scores from the two components, then fuse them as the basis for insider threat detection.  The multi-source information contains activities such as logging on/off, sending and receiving emails, accessing external devices or files, and
+To detect insider threat that deviates from the portraits of normal users as well as who tries to behave like a normal user to cover up his evil,
+we propose a hybrid model based on multi-dimensional features for insider threat detection. The structure of our proposed model is illustrated in Fig. 2. The hybrid model includes two components, one is named ``Across-Domain Anomaly Detection (ADAD)'', and the other is ``Across-Time Anomaly Detection (ATAD)''. We get anomaly scores from the two components, then fuse them as the basis for insider threat detection.  The multi-source information contains activities such as logging on/off, sending and receiving emails, accessing external devices or files, and
 accessing web sites. We refer to different categories of data as “domains”, e.g., “logon domain” and “email domain”. The dataset used in this paper is described in the following section. 
 
 
 \begin{figure}[htb]
 \centerline{\includegraphics[width = 0.35\textwidth]{figure/figure2.eps}}
-\caption{Anomaly Detection Framework.}
+\caption{Anomaly detection framework.}
 \label{fig}
 \end{figure}
 
 \subsection{The Data Set}
 
-Due to the lack of availability of proper insider threat datasets, we have utilized the insider threat dataset published by CERT Carnegie Mellon University for this research \cite{b17}. The dataset “R4.2.tar.bz” lasting 17 months has been used for this analysis. This dataset consists of six broad types of data records (HTTP, logon, device, file, email and psychometric) of 1000 employees over a 17 months period. All HTTP records contain user, PC, URL and web page content with time stamps. “Logon.csv” consists of user logon/logoff activities with the corresponding PC with timestamps. The data file “device.csv” indicates insert/remove actions with the relevant user, PC, and timestamp. Details of file copies are stored in “file.csv” file with date, user, PC, filename, and content. We should note that the CERT Dataset contains the ground truth for each user (when they are acting maliciously or not), which allows us to monitor the success or failure of our experiment.
+Due to the lack of availability of proper insider threat datasets, we have utilized the insider threat dataset published by CERT Carnegie Mellon University for this research \cite{b17}. The dataset ``R4.2.tar.bz'' lasting 17 months has been used for this analysis. This dataset consists of six broad types of data records (HTTP, logon, device, file, email and psychometric) of 1000 employees over a 17 months period. All HTTP records contain user, PC, URL and web page content with time stamps. “Logon.csv” consists of user logon/logoff activities with the corresponding PC with timestamps. The data file “device.csv” indicates insert/remove actions with the relevant user, PC, and timestamp. Details of file copies are stored in “file.csv” file with date, user, PC, filename, and content. We should note that the Dataset contains the ground truth for each user (when they are acting maliciously or not), which allows us to monitor the success or failure of our experiment.
 
 \section{KEY METHODOLOGIES}
-In this section, we describe our Across-Domain anomaly detection (ADAD) model in detail at first. We then detail the Across-Time model (ATAD) to detect insider threats. Finally, we introduce the fusion method by combining ADAD and ATAD.
+In this section, we describe our Across-Domain Anomaly Detection (ADAD) model in detail at first. We then detail the Across-Time Anomaly Detection (ATAD) model. Finally, we introduce the fusion method to combine ADAD and ATAD.
 
 \subsection{Approach 1:Across-Domain Anomaly Detection (ADAD)}\label{AA}
-This framework will utilize multi-domain information inputs, such as logon records and operation on file, to identify abnormal users， who behave differently from their peers.
+This framework will utilize multi-domain information inputs, such as logon records and operation on file, to identify abnormal users， who behave differently from their peers. We first extract temporal features from multi-domain data, upon which insider threats are detected.
 
 \iffalse
 Figure 3 reports the structure of the approach.
@@ -165,7 +164,7 @@ Figure 3 reports the structure of the approach.
 
 \textbf{Logon/Logoff Behaviors.} 
 As most disgruntled insiders tend to
-commit malicious logon or logoff activities after hours,  These behaviors are applied to identify malicious insiders.
+commit malicious logon or logoff activities after hours,  these behaviors are applied to identify malicious insiders.
 
 %width=2.8in
 
@@ -191,28 +190,27 @@ commit malicious logon or logoff activities after hours,  These behaviors are ap
 {
  \includegraphics[width=0.18\textwidth]{figure/figure53.eps}
 }
-\caption{  ``Nmode/Nma''
-presents the mode/max number of normal users behaviors, and
+\caption{  Users' behaviors. 
+``Nmode/Nmax'' presents the mode/max number of normal users behaviors, and
 the ``ABmode/ABmax'' presents the mode/max number of abnormal users
 behaviors. }
 \label{fig4}
 \end{figure*}
 
 \noindent \textbf{Removable media usage.}
-Removable media is among the most popular method used in theft of Intellectual Property (IP) in extracting confidential information from organizations \cite{b18}. Tracking the use of removable media can be an excellent information source for identifying suspicious events by trusted insiders.
+Removable media is among the most popular method used in theft of Intellectual Property  \cite{b18}. Tracking the use of removable media can be an excellent information source for identifying suspicious events.
 
 \noindent \textbf{File copy Behaviors.}
-File copying is an easy method to steal confidential information from organizations. So the number of occurrences of the behavior can give some useful information to detect insider threats. 
+File copying is an easy method to steal confidential evidence from organizations. So the number of occurrences of the behavior can give some useful information to detect insider threats. 
 
-To model users' multi-domain behaviors, we extract several temporal features. First, we count the times of each behavior for every hour, and then calculate the average of the maximum counts and mode counts of each behavior. The maximum counts indicate the change range of user behaviors, and the mode counts present the general behavior of most users. 
-
+To model users' behaviors, we extract several temporal features to present the occurrences of different behaviors. For each user, we first count the times of each behavior for every hour, and then calculate the average of the maximum counts and mode counts of each behavior. The maximum counts indicate the change range of user behaviors, and the mode counts present the general behavior of most users. 
 In order to find out whether the number of occurrences of these behaviors is different between normal users and abnormal users, figure 3 investigates their distributions.
 \iffalse
 we let the ``Nmode'' presents the mode number of normal users behaviors, and the ``ABmode'' presents the mode number of abnormal users behaviors. The maximum is the same with mode number.
 
 Figure 3 is an indication of the distribution of users behaviors counts. 
 \fi
-We found that there is a big difference in behavior between normal users and abnormal users at different times in a day. These abnormal users have more frequent operations in midnight comparing with normal users. So, we divide the 24 hours of a day into 4 time segments: (0:00-06:00),(00:60-12:00),(12:00-18:00),(18:00-24:00). The maximum or mode counts of user behaviors with regard to the five domains are calculated for the 4 segments respectively. Table 1 is an illustration of the feature set.
+We found that there is a big difference in behavior between normal users and abnormal users at different times in a day. Compared with normal users, these abnormal users have more frequent operations in midnight. So, we divide the 24 hours of a day into 4 time segments: (0:00-06:00),(00:60-12:00),(12:00-18:00),(18:00-24:00). The maximum or mode counts of user behaviors with regard to the five domains are calculated for the 4 segments respectively. Table 1 is an illustration of the feature set.
 
 \begin{table}[tbp]
 \caption{Selected feature set.}
@@ -220,30 +218,33 @@ We found that there is a big difference in behavior between normal users and abn
 \begin{tabular}{lll}  % {lccc} 表示各列元素对齐方式，left-l,right-r,center-c
 \hline
 Module    &\tabincell{c}{Features\\
-(per 6 hours)} & The number of features\\ \hline
+(per 6 hours)} &\tabincell{c}{The number\\
+of features}\\ \hline
     
-Logon events    &Max/Mode Logon counts & 4\\\hline
+Logon events    &Max/Mode Logon counts per 6 hours& 4\\\hline
 
-Logoff events    &Max/Mode Logoff counts & 4\\\hline
+Logoff events    &Max/Mode Logoff counts per 6 hours& 4\\\hline
 
-Removable Media    &\tabincell{c}{Max/Mode Connect  counts\\Max/Mode Disconnect counts} &\tabincell{c}{4 \\ 4}\\\hline
+Removable Media    &\tabincell{c}{Max/Mode USB connect  counts per 6 hours\\Max/Mode USB disconnect counts per 6 hours} &\tabincell{c}{4 \\ 4}\\\hline
 
-File copy events    & Max/Mode Filecopy counts & 4\\\hline
+File copy events    & Max/Mode Filecopy counts per 6 hours& 4\\\hline
 
 \end{tabular}
 
 \end{table}
 
-In addition, in order to discover features interfere with the ability to
-correctly identify insider threats, we use PCA \cite{b19} for denoising to achieves a higher
-detection accuracy.
+\iffalse
+In addition, in order to discover features which interfere with the ability to
+correctly identify insider threats, we use PCA \cite{b19} for denoising.
+\fi
+In addition, in order to select domain features that have big impacts on user's behavior, we apply the Principal Component Analysis (PCA) \cite{b19} to give a score value to each feature. These features obtain high score is used to be the input to the model. 
 \subsubsection{Anomaly Detection}
 
-Due to the complex nature of insider threat problem, it is extremely hard to pinpoint a user as a malicious insider. This section will focus on implementing an anomaly detection algorithm based on the properties identified at the first step of feature extraction. The anomaly detection algorithm adopted in this analysis is the ''Isolation forest`` algorithm \cite{b20}, which stands out in effectively separating anomalous events from the rest of the instances. In order to select domain features that have big impacts on user's behavior, we apply the principal component analysis to give a score value to each feature. 
+Due to the complex nature of insider threat problem, it is extremely hard to pinpoint a user as a malicious insider. This section focuses on implementing an anomaly detection algorithm based on the properties identified in the section of feature extraction. The anomaly detection algorithm adopted in this analysis is the ``Isolation forest (iforest)'' algorithm \cite{b20}, which stands out in effectively separating anomalous events from the rest of the instances. In the end, the iforest gives an anomaly score for each user and outputs some users who may be an insider threat explicitly.
 
 \subsection{Approach 2: Across-Time Anomaly Detection (ATAD)}
 
-In this section, a new method (IM) based on Markov proposed is to detect insider threats. For insider threats detection, we first build a model to represent the regular behaviors. Then, we will compare the temporal behavior in the recent past with the regular behaviors for detecting unusual changes of user behaviors.
+In this section, an improved model (IM) based on Markov is proposed to detect insider threats. We first build a model to represent the regular behaviors of a user. Then, we compare the temporal behavior in the recent past with the regular behaviors to detect unusual changes of his/her behaviors.
  
 \iffalse
 Figure 6 shows a graphical overview of the processing approach and pipeline we use, and the remainder of this section is dedicated to describing each stage in it.
@@ -255,25 +256,23 @@ Figure 6 shows a graphical overview of the processing approach and pipeline we u
 \fi
 \subsubsection{Model building}
 
-When building an improved model (IM), we take users behaviors as a temporal sequence and model users behaviors as Markov model.
-Markov Model (MM) \cite{b21} is an extremely powerful
+When building an improved model (IM), we take users behaviors as a temporal sequence and model users behaviors as Markov model (MM).
+MM \cite{b21} is an extremely powerful
 tool to model temporal sequence information. It has been
 widely used in temporal pattern recognition problems (e.g.,
 speech recognition, bioinformatics, gesture recognition) \cite{b23}. MM has also been used
-in the general area of intrusion detection by some notable
-works (\cite{b21}).
+in the area of intrusion detection \cite{b21}.
 
-Users have different behaviors on computers every day. When a user finishes a behavior and begins the next behavior, a new record is created. 
-The historical behaviors of a user can be represented as a sequence of observations \emph{B=$(a_1,a_2...,a_n)$}, in which \emph{$a_i$} is the behavior that user is served by at time \emph{t}. 
+Users have different behaviors on computers every day. 
+The historical behaviors of a user can be represented as a sequence of observations \emph{B=$(a_1,a_2...,a_n)$}, in which \emph{$a_i$} is the behavior that user is served by at time \emph{i}. 
 
-Let substring \emph{B$(i, j) = a_ia_{i+1}\ldots a_j$} for any \emph{$1 \textless i \textless j \textless n$}. Define the context \emph{c = B$(n-k+1,n)$}. Let \emph{A} be the set of all possible behaviors. 
-We denote the user’s behaviors as a random variable \emph{X}. \emph{$X(i,j)$} represents the sequence of random variates \emph{$X_i, X_{i+1},\ldots X_j$} for any \emph{$1\textless i \textless j \textless n$}. 
+Let substring \emph{B$(i, j) = a_ia_{i+1}\ldots a_j$} for any \emph{$1 \leq i \leq j \leq n$}. Define the context \emph{$c = B(n,n)$}. Let \emph{A} be the set of all possible behaviors. Also, we denote the user's behaviors as a random variable \emph{X}. 
 For all \emph{$a \in A $} and \emph{$i \in \{1,2,. . ., n\}$}, the notation \emph{$P(X_i = a_i|\ldots)$} denotes the probability that \emph{$X_i$} takes the value \emph{$a_i$}.
 These probabilities that can be represented by a \emph{transition
 probability matrix M}. 
-In order to abtain \emph{M}, we can generate an estimate \emph{$\hat P$} from the current history \emph{B} using the current context \emph{c} of length \emph{k}. The probability for the next symbol to be \emph{a} is
+In order to abtain \emph{M}, we generate an estimate \emph{$\hat P$} from the current history \emph{B} using the current context \emph{c}. The probability for the next transition symbol to be \emph{a} is
 \begin{align}
-    P_k(a)=\hat P(X_{n+1}=a|B))= \frac {N(ca,B)}{N(c,B)},
+    P(a)=\hat P(X_{n+1}=a|B)= \frac {N(ca,B)}{N(c,B)},
 \end{align}
 where \emph{N(s',s)} denotes the number of times the substring \emph{s'} occurs in the string \emph{s}.
 \iffalse
@@ -283,23 +282,19 @@ The estimate predicts the symbol \emph{$a \in A$} with the maximum probability \
 \subsubsection{Anomaly Detection}
 
 
-We define the temporal behaviors in the recent past by opening up continuous observation windows of size \emph{N} on the users behaviors. Then we treat the users behaviors in the \emph{i-th} observation window as \emph{$B_i$}=\emph{$a_{i1},a_{i2},\dots,a_{in}$}, where \emph{n} denotes the \emph{n-th} behavior in the window.
+We define the temporal behaviors in the recent past by opening up \emph{D} continuous observation windows with the length of \emph{N}. The users behaviors in the \emph{i-th} observation window is defined  \emph{$B_i$}=\emph{$a_{i1},a_{i2},\dots,a_{iN}$}, where \emph{N} denotes the \emph{N-th} behavior in the window \emph{i}.
 Given the \emph{M} matrix produced in the first step, the anomaly score \emph{R$_{trend}$} for the user is calculated as
 \begin{align}
-R_{trend}=\frac{\sum_{d=1}^D \prod_{t=1}^N P_k(a_{dn})}{D},
+R_{trend}=\frac{\sum_{d=1}^D \prod_{n=1}^N P(a_{dn})}{D},
 \end{align}
 
 
 After obtaining the anomaly score for all users, 
-we can then set a threshold \emph{T}, which we use to classify users as anomalous or not. If the anomaly score of the user is below the threshold, we classify it as anomalous. This threshold \emph{T} is a critical parameter of our model which must be set carefully.
-However, after running the IM Algorithm, we can save the anomaly scores generated and then experiment with many values of \emph{T}. One could also imagine a human security analyst increasing T from 0 in order to be presented with more instances which the user deems anomalous.
+we set a threshold \emph{T}, which is used to classify users as anomalous or not. If the anomaly score of the user is below the threshold, he/she is identified as anomalous. This threshold \emph{T} is a critical parameter of our model which must be set carefully.
+However, after running the IM algorithm, we can save the anomaly scores generated and then experiment with many values of \emph{T}. One could also imagine a human security analyst increasing T from 0 in order to be presented with more instances which the user deems anomalous.
 \subsection{Information fusion}
-in this section, our goal is to combine anomaly scores that have been generated from the two models proposed above to detect anomalies.
-\iffalse
-We note that in a more general analytics framework, the same technique can be used to combine scores based on relative importance or surprise/risk levels.
-In anomaly detection, an individual can be anomalous in one domain or at a time instance. Also, the relative suspicion of an individual can vary from one indicator (or information source) to another. However, most anomaly detection applications require a single overall conclusion about the relative suspicion of each individual.
-\fi
-Therefore, we developed a technique based on weight fusion to combine evidence from ADAD and ATAD. The combined anomaly score \emph{$R_{combine}$} is computed as
+In this section, our goal is to combine anomaly scores that have been generated from the two models proposed above and achieves a higher detection accuracy.
+Therefore, a technique based on weight fusion is developed to combine the anomaly sores derived  from ADAD and ATAD. The combined anomaly score \emph{$R_{combine}$} is computed as
 \begin{align}
 R_{combined}&= W_1*R_{ADAD}+W_2*R_{ATAD}\\
 r&=\begin{cases}
@@ -309,29 +304,28 @@ r&=\begin{cases}
 &\mbox{if } W_1 = 0,\\
 \end{cases}
 \end{align}
-We can then set a threshold \emph{$T_{com}$}, which is used to classify users as anomalous or not. If the anomaly score of the user is below the threshold, we regard the user as anomalous.
+We then set a threshold \emph{$T_{com}$}, which is used to classify users as anomalous or not. If the anomaly score of the user is below the threshold, we regard the user as anomalous.
 
 \section{Experiment}
-
+\iffalse
 This section is dedicated to a comprehensive discussion of the results of the experiment.
 We will first introduce the performance metrics for evaluating the three detection models,  separately. Then, we provide a comparative assessment of our proposed models with other existing insider threat detection methods. 
-
-
+\fi
+This section will provide a comprehensive evaluation on our proposed models. First, we assess the performance of ADAD, and then discuss the results of the ATAD. Finally, we 
+provide a comparative assessment of our proposed hybrid model by comparing with the ADAD and ATAD.
 \subsection{Across-Domain Anomaly Detection (ADAD)}\label{AA}
 In this section, we first introduce the performance metrics for evaluating the detection model. 
-Then, selected features are evaluated by the isolation forest to detect insider threats.
-
+Then, the model using distinct features are evaluated.
 
 \emph{1) Evaluation Metrics and Baselines:}
-Because the isolation forest can identify the anomalies, we consider the metrics \emph{accuracy, Precision} and \emph{recall} to quantitatively evaluate the performance of this model.  
+Because the iforest identifies the anomalies, we evaluate the performance of this model by using \emph{accuracy, precision} and \emph{recall}.  
 \emph{Precision} is the
 fraction of the data entries labeled malicious that are
-truly malicious; \emph{recall}, also known as sensitivity or true
-positive rate, is the fraction of malicious entries that are
+truly malicious; \emph{recall} is the fraction of malicious entries that are
 classified correctly; \emph{accuracy} is the fraction of all entries
 that are classified correctly \cite{b22}.
 \iffalse
-\emph{Accuracy} represents the proportion of the number of users who are detected correctly in all users by the model. \emph{Precision} represents the proportion of the number of insider threats are detected correctly in the insider threats who are detected by the model and \emph{Recall} represents the proportion of the number of insider threats are detected in all insider threats by the model.
+\emph{Accuracy} represents the proportion of the number of users who are detected correctly in all users by the model. \emph{precision} represents the proportion of the number of insider threats are detected correctly in the insider threats who are detected by the model and \emph{Recall} represents the proportion of the number of insider threats are detected in all insider threats by the model.
 \fi
 
 \iffalse
@@ -343,9 +337,9 @@ Recall&=TP/(TP+FN)
 Where \emph{TP} denotes the number of insider threaters are detected as insider threaters, \emph{TN} denotes the number of normal users are detected normal users, \emph{FP} denotes the number of insider threaters are detected normal users and \emph{FN} denotes normal users are detected insider threaters.
 \fi
 
-\emph{2) Comparative Evaluation:} Table II shows the results of running our model ADAD with different parameters.
-We found that removable media domain is the most detectable (with the highest detective accuracy), while logon and file domains are weak in detecting insider threats. It appears that users show great variations in their behavior of device usages, but are more uniform in the logon and file behaviors. Except that, the mode counts are more effective than maximum to detect insider threats. The result indicates that the mode represents the more significant difference between normal and abnormal. It is obvious that some features interfere with the ability to correctly identify insider threats. In particular, using the \emph{PCA} to
-decompose the features to a 2-D space. After denoising by \emph{PCA}, the model can achieve a higher detection accuracy.
+\emph{2) Comparative Evaluation:} Table II shows the results of our models ADAD with different parameters.
+We found that USB connect and disconnect are the most detectable. While logon and file domains are weak in detecting insider threats. It appears that normal users and abnormal users show great variations in their behavior of device usages, but are more uniform in the logon and file behaviors. Except that, the mode counts are more effective than maximum counts. The result indicates that the mode represents a more significant difference between normal and abnormal. It is obvious that some features interfere with the ability to correctly identify insider threats. 
+The model can achieve a higher detection accuracy via decomposing the features to a 2-D space by \emph{PCA}, which denoises the data at the meantime.
 
 
 \begin{table}[tbp]
@@ -359,15 +353,15 @@ Logon     & MAX &89\% &32\% &47\%\\
   & MODE &87\% &22\% &34\%\\\hline
 Logoff     & MAX &88\% &23\% &34\%\\
    & MODE &85\% &14\% &21\%\\\hline
-Connet     & MAX &78\% &65\% &27\%\\
+USB connet     & MAX &78\% &65\% &27\%\\
   & MODE &79\% &70\% &28\%\\\hline
-Disconnect     & MAX &80\% &73\% &30\%\\
+USB disconnect     & MAX &80\% &73\% &30\%\\
   & MODE &79\% &69\% &28\%\\\hline
 Filecopy     & MAX &80\% &60\% &28\%\\
   & MODE &77\% &44\% &20\%\\\hline
 All domains     & MAX &82\% &68\% &34\%\\
   & MODE &79\% &52\% &31\%\\\hline
-\tabincell{c}{All domains combined \\with PCA method }    &   &87\% &79\% &35\%\\\hline
+\tabincell{c}{All domains combined \\with PCA method }    &   &\textbf{87\%} &\textbf{79\%} &\textbf{35\%}\\\hline
 
 \end{tabular}
 
@@ -380,25 +374,31 @@ evaluating the detection model. We then provide a
 comparative assessment of our proposed models with existing MM detection methods.
 
 \emph{1) Evaluation Metrics and Baselines:}
-For ATAD, a threshold \emph{T} is essential to classify users as anomalous or not. 
-So we consider the metrics Receiver Operating Characteristic curves (or \emph{ROC} curves) curve to quantitatively evaluate the models \cite{b17}.
+For ATAD, the threshold \emph{T} is essential to classify users as anomalous or not. 
+So the metrics Receiver Operating Characteristic curves (or \emph{ROC} curves) curve is applied to evaluate the models \cite{b17}.
 
 \textbf{Comparison Methods.}
-MM has also been used in the general area of intrusion detection by some notable works (\cite{b21}). The improved model (IM) based on Markov is respectively compared with existing detection Markov:
+MM is an extremely powerful tool to model temporal sequence information. It also been used in the general area of intrusion detection by some notable works \cite{b21}.
+The IM is compared with existing detection model Markov.
 
-Markov \cite{b21}: when calculating the anomaly score, this model regards the behavior sequences of the week as the whole and treat the evaluation result of the sequences as the final anomaly score for the week.
+\iffalse
+Markov \cite{b21}: when calculating the anomaly score, this model regards the behavior sequences of the week as the whole, then calculates the probability of the behavior sequences as the anomaly score.
+\fi
 %This study let \emph{N} equal a day, and \emph{D} equal to a week for building a complete profile for a user as a week cycle.说一下训练集和测试集，选最后两个月的数据进行试验，因为时间太长会导致用户的行为发生变化。53天作为训练集，7天作为测试集。一个星期表示工作的一个cycle
 
 \emph{2) Comparative Evaluation:} 
 \textbf{Comparison between IM and MM.}
-If the training set is too long, the user's regular behaviors may have a change, which has an effect on building the normal model. So, Sixty days from the 16th month to the 17th month of dataset R4.2.tar.bz lasting 17 months has been used for this analysis. Specifically, the first 53 days in the 60 days ie treated as the training set to build models and the rest is the testing set. The testing set is consist of records of a week. Because a week can build a complete work cycle profile for a user. IM mode let the observation window \emph{N} equal a day.
-We apply our IM model detection result as figure 4. It's obvious that the IM model is more effective than MM. For MM, if a user has once unusual change during this week, the change will have an important influence on the detection result. However, this effect can be avoided by IM. When scoring the user's behavior, IM uses the week's average anomaly score to evaluate a user's behavior, which will reduce the impact of accidental unusual change on detecting insider threats.
-In other words, IM tends to detect abnormal changes in behavioral trends over a period of time. Hence, it detects insider threats more robustly. 
+Sixty days from the 16th month to the 17th month of dataset R4.2.tar.bz has been used for ATAD. Specifically, the first 53 days in the 60 days is treated as the training set to build regular behaviors model and the rest is the testing set. Choosing 53 days as the training set can aviod the user's regular behaviors changing, which has an effect on building the normal model. The testing set is composed of records of a week, as behaviors of a week can build a complete work cycle profile for a user. IM mode sets the length of the observation window \emph{N} as a day.
+The result of the IM model is shown in Fig. 4. It's obvious that the IM model is more effective than MM. For MM, if a user has once unusual change during this week, the change will have an important influence on the detection result. However, this effect can be avoided by IM. When scoring the user's behavior, IM uses the week's average anomaly score to evaluate a user's behavior, and reduces the impact of accidental unusual change on detecting insider threats.
+\iffalse
+In other words, IM tends to detect abnormal changes in behavioral trends over a period of time.
+\fi
+Hence, it detects insider threats more robustly. 
 
 
 
 \begin{figure}[htb]
-\centerline{\includegraphics[width = 0.25\textwidth]{figure/figure7.eps}}
+\centerline{\includegraphics[width = 0.30\textwidth]{figure/figure7.eps}}
 \caption{ROC Curve showing the differences between MM algorithm and IM algorithm.}
 \label{fig}
 \end{figure}
@@ -409,12 +409,11 @@ In this section,  we first introduce the performance metrics for evaluating the 
 We then provide a comparative assessment of our fusion method with the above two models.
 
 \emph{1) Evaluation Metrics and Baselines:}
-For the fusion method, the most important issue is to determine the proportion of each component. So we let \emph{r}, the proportion of anomaly scores generated from the two models, increase from 0 to 1. Then we use the metrics \emph{accuracy, Precision} and \emph{recall} to quantitatively evaluate the models.
+For the fusion method, the most important issue is to determine the proportion of every component. So we let \emph{r}, the proportion of anomaly scores generated from the two models, increase from 0 to 1. Then we use the metrics \emph{accuracy, precision} and \emph{recall} to quantitatively evaluate the models.
 
 \emph{2) Comparative Evaluation:} 
-We compare the fusion method with the ADAD and the ATAD, the comparison results of detecting insider threats are shown in Table 3.
-To remove amplitude variation and only focus on the underlying distribution shape on data, the scores are normalized before the weight fusion. When \emph{r} = 0, it is the result of individual ADAD method. When \emph{r} = 1, it is the result of individual ATAD method. We can see the ADAD is better than the ATAD, and fusing two model achieves better performance. When \emph{r} values vary between 1/9 and 3/7, the precision of the hybrid model has greater improvements. The ADAD model is a data-driven model, and it fails to detect a malicious insider who tries to behave like a normal user to cover up his evil. However, the ATAD can make up for this deficiency by comparing behaviors of users in different time periods. So, it is remarkable to build a hybrid model to combine the individual ATAD and ADAD scores. The hybrid model leads to significant improvement in performance relative to any of the individual ATAD or ADAD sources.
-
+We compare the fusion method with the ADAD and the ATAD, and the comparison results of detecting insider threats are shown in Table 3.
+To remove amplitude variation and only focus on the underlying distribution shape on data, the scores are normalized before the weight fusion. When \emph{r} = 0, it is the result of individual ADAD method. When \emph{r} = 1, it is the result of individual ATAD method. We can see the ADAD is better than the ATAD, and fusing two model achieves better performance. When \emph{r} values vary between 1/9 and 3/7, the precision of the hybrid model has greater improvements. The ADAD model is a data-driven model, and it fails to detect a malicious insider who tries to behave like a normal user to cover up his evil. However, the ATAD can make up for this deficiency by comparing behaviors of users in different time periods. So, it is remarkable to build a hybrid model to combine the individual ATAD and ADAD scores. 
 \iffalse
 \begin{table}[tbp]
 \caption{The result of the information fusion experiment.}
@@ -453,23 +452,27 @@ Recall &35.19 &\textbf{35.18\%} &\textbf{31.48\%} &\textbf{35.19\%}&33.33\%&33.3
 
 \end{table*}
 
-To get a better understanding and visualization of results based on our approach, we mark the positive sample with the red and negative sample with blue. Fig. 5 is an indication of how the anomaly scores are distributed when \emph{r} is 3/7 in this analysis. The graph indicates few points above the red color horizontal line which is equivalent to an anomaly score of 1.3. We chose the best threshold by \emph{ROC} curves in this scene. Users whose anomaly scores exceed the threshold can be considered as anomalous users. It reached 95\% of the accuracy when \emph{r} is 3/7. The model exists some limitations, which causes some insider threats not to be detected. 
-We will present the limitation of our work in the next section.
+To get a better visualization of results based on our approach, we mark the positive sample with the red and negative sample with blue. 
+When \emph{r} is 3/7, we chose a threshold 1.3 to determine insider threats.
+Fig. 5 is an indication of how the anomaly scores are distributed when \emph{r} is 3/7. 
+The red color horizontal line is equivalent to the threshold.
+Users whose anomaly scores exceed the threshold can be considered as anomalous users. The model exists some limitations. Our current procedure for determining if the
+anomaly score is anomalous or not is to compare with a threshold. This requires us to manually set a threshold value, which is a hyperparameter of our mode that significantly affects the results. 
+We will explore it in the future study. 
 %indicates that 95\% of the insider threat we detected are true insider threats.  
 
 \begin{figure}[htb]
-\centerline{\includegraphics[width = 0.25\textwidth]{figure/figure8.eps}}
+\centerline{\includegraphics[width = 0.45\textwidth]{figure/figure8.eps}}
 \caption{Anomaly score distribution.}
 \label{fig}
 \end{figure}
 
 \section{Conclusion}
 
-In this paper, we propose a hybrid model that combines a data driven-model with a behavior-driven model to detect insider threat in a more robust and accurate manner. 
-First, the multi-dimensional features extracted from data collected from the enterprise network is formatted and fed separately into the two separate models. Second, each model generates an abnormal score to represent the degree of users' unusual behaviors. Finally, the abnormal scores of two models are fused as the final abnormal scores for each user, and a user will be detected an insider threat if the anomaly score exceeds the threshold. After a wide range experiment, it is 
-verified that the hybrid model can detect insider threats with a high accuracy of 95\%, which is of great significance in industry and scientific research.
+In this paper, we proposed a hybrid model that combined a data driven-model with a behavior-driven model to detect insider threat in a more robust and accurate manner. 
+First, the multi-dimensional features extracted from data collected from the enterprise network is formatted and fed separately into the two separate models. Second, each model generated an abnormal score to represent the degree of users' unusual behaviors. Finally, the abnormal scores of two models were fused as the final abnormal scores for each user, and a user was detected an insider threat if the anomaly score exceeded the threshold. After a wide range of experiments, it is verified that the hybrid model can detect insider threats with a high accuracy of 95\%, which is of great significance in industry and scientific research.
 
-The hybrid model proposed has a high precision but a pessimistic recall. To solve this problem, we will take the user’s job role into account to improve the recall of anomaly detection(e.g.,\cite{b16}).       
+The hybrid model proposed has a high precision but a pessimistic recall. To solve this problem, we will take the user’s job role into account to improve the recall of anomaly detection  \cite{b16}.       
 
 
 
